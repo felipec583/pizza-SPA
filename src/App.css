@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.cart-icon-container img {
+  width: 4rem;
+}
+
+.pizza-img {
+  width: 3rem;
+}
+
+.ingredient-list {
+  padding: 0 20px;
+}
+
+.card-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 2em;
+  place-items: center;
+  margin: 10px 0;
+}
+
+.pizza-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+
+.pizza-card > * {
+  margin-top: 100px;
+}
+
+.ingredient-item {
+  margin-left: 20px;
+}
+
+.cart-container {
+  height: 90vh;
+}
+
+.cart {
+  width: 70%;
+  height: 90%;
+  margin-top: 3rem;
+  overflow: scroll;
+}
+
+.items-cont {
+  display: flex;
+  gap: 20px;
+}
+
+.cart-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 100px;
+}
+
