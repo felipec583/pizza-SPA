@@ -31,12 +31,7 @@ const Pizza = () => {
   const { id } = useParams();
   useEffect(() => {
     const pizzaArr = [...data];
-    const pizzaItem = pizzaArr.reduce((output, item) => {
-      if (item.id == id) {
-        output = item;
-      }
-      return output;
-    }, {});
+    const pizzaItem = pizzaArr.find((pizza) => pizza.id == id);
     setPizzaData(pizzaItem);
     addUpPrices();
   }, [total, pizzaData, cartList]);

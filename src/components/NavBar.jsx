@@ -11,12 +11,12 @@ const NavBar = () => {
         <div className="sm:flex justify-around items-center">
           <div className="flex items-center">
             <img src="/pizza.svg" alt="" className="pizza-img" />
-            <Link to={"/"} className="hover:text-red-500  font-bold text-2xl">
+            <Link to={"/home"} className="hover:text-red-500  font-bold text-2xl">
               Pizzería Mamma Mía!
             </Link>
           </div>
           <div className="cart-icon-container flex items-center gap-5">
-            <Link to="/cart">
+            <Link to="/carrito">
               <img src="/cart.svg" alt="" />
             </Link>
             <p className="font-bold text-2xl">{numberFormat.format(total)}</p>

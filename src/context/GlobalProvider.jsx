@@ -21,7 +21,6 @@ const GlobalProvider = ({ children }) => {
     })
       .then((response) => {
         if (response.ok) {
-          console.log("Promise resolved");
           return response.json();
         } else {
           //Custom message for failed HTTP codes
@@ -32,12 +31,7 @@ const GlobalProvider = ({ children }) => {
         }
       })
       .then((pizzaData) => {
-        console.log(pizzaData);
         setData(pizzaData);
-
-        console.log("this is the real data", data);
-        const copy = [...data];
-        console.log(copy);
       })
       .catch((error) => console.log(`There is an issue: ${error.message}`));
   }, []);
@@ -81,9 +75,9 @@ const GlobalProvider = ({ children }) => {
   }
   function addUpPrices() {
     const cartListCopy = [...cartList];
-    const amount = cartListCopy.reduce((acc, item) => {
-      acc += item.price * item.quantity;
-      return acc;
+    const amount = cartListCopy.reduce((totalAmount, item) => {
+      totalAmount += item.price * item.quantity;
+      return totalAmount;
     }, 0);
     setTotal(amount);
   }

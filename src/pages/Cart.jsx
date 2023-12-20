@@ -61,7 +61,7 @@ const Cart = () => {
                         <FaTrashAlt
                           size={35}
                           color="red"
-                          className="hover: to-red-50"
+                          className="hover:fill-current hover:cyan"
                         />
                       </button>
                     </div>
@@ -76,7 +76,7 @@ const Cart = () => {
               })}
 
             <div className="bg-white">
-              <p className="text-2xl font-bold my-2">
+              <p className="text-4xl font-bold my-3">
                 Total: {numberFormat.format(total)}
               </p>
               <Button colorScheme="green">Ir a pagar</Button>

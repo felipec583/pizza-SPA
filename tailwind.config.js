@@ -8,6 +8,9 @@ export default {
       },
     },
   },
+  variants: {
+    fill: ["hover", "focus"],
+  },
   plugins: [],
 };
 

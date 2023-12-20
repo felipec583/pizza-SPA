@@ -11,8 +11,8 @@ import ErrorPage from "../pages/ErrorPage";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />} errorElement={<ErrorPage />}>
-      <Route index element={<Home />} />
-      <Route path="cart" element={<Cart />} />
+      <Route element={<Home />} path="home"/>
+      <Route path="carrito" element={<Cart />} />
       <Route path="pizza/:id" element={<Pizza />} />
     </Route>
   )
