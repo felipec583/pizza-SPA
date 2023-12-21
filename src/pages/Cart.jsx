@@ -4,8 +4,9 @@ import { useContext, useEffect } from "react";
 import { GlobalContext } from "../context/GlobalProvider";
 import { capitalizeString } from "../utils/utils";
 import { numberFormat } from "../utils/utils";
-
+import { useToast } from "@chakra-ui/react";
 const Cart = () => {
+  const toast = useToast();
   const {
     cartList,
     total,
@@ -57,7 +58,20 @@ const Cart = () => {
                         +
                       </Button>
 
-                      <button onClick={() => deleteProduct(item)}>
+                      <button
+                        onClick={() => {
+                          deleteProduct(item);
+                          toast({
+                            title: "Pizza eliminada",
+                            description: `Se eliminó pizza ${capitalizeString(
+                              item.name
+                            )}`,
+                            status: "error",
+                            duration: 3000,
+                            isClosable: true,
+                          });
+                        }}
+                      >
                         <FaTrashAlt
                           size={35}
                           color="red"

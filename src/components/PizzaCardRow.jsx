@@ -29,7 +29,13 @@ const PizzaCardRow = () => {
       <section className="card-row">
         {data.map((pizza) => {
           return (
-            <Card maxW={"420"} key={pizza?.id} height={680} variant={"outline"}>
+            <Card
+              maxW={"420"}
+              key={pizza?.id}
+              height={680}
+              variant={"outline"}
+              
+            >
               <CardBody>
                 <div className="flex justify-center">
                   <Image
