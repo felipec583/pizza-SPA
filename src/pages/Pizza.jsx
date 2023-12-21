@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { GlobalContext } from "../context/GlobalProvider";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { capitalizeString } from "../utils/utils";
 import { useToast } from "@chakra-ui/react";
 import {
@@ -19,6 +19,7 @@ import {
 import { GrCart } from "react-icons/gr";
 const Pizza = () => {
   const toast = useToast();
+  const location = useLocation();
   const {
     data,
     pizzaData,
@@ -33,8 +34,9 @@ const Pizza = () => {
     const pizzaArr = [...data];
     const pizzaItem = pizzaArr.find((pizza) => pizza.id == id);
     setPizzaData(pizzaItem);
+
     addUpPrices();
-  }, [total, pizzaData, cartList]);
+  }, [total, pizzaData, cartList, location]);
   return (
     <>
       <section className="pizza-card">
@@ -56,7 +58,7 @@ const Pizza = () => {
           <Stack>
             <CardBody>
               <Heading size="md" margin={"20px 0"}>
-                {pizzaData && capitalizeString(pizzaData?.name)}
+                {pizzaData && pizzaData.name}
               </Heading>
               <Divider
                 borderColor={"black"}
