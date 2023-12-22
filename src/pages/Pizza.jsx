@@ -1,8 +1,9 @@
 import { useContext, useEffect } from "react";
 import { GlobalContext } from "../context/GlobalProvider";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { capitalizeString } from "../utils/utils";
 import { useToast } from "@chakra-ui/react";
+
 import {
   Card,
   CardBody,
@@ -22,12 +23,19 @@ const Pizza = () => {
   const { data, pizzaData, setPizzaData, handleAddToCart, addUpPrices } =
     useContext(GlobalContext);
   const { id } = useParams();
+  const navigate = useNavigate();
   useEffect(() => {
     const pizzaArr = [...data];
-    const pizzaItem = pizzaArr.find((pizza) => pizza.id == id);
-    setPizzaData(pizzaItem);
+    const pizzaItem = pizzaArr.find((pizza) => pizza.id === id);
+    if (pizzaItem) {
+      setPizzaData(pizzaItem);
+    }
+    if (pizzaArr.length > 0 && !pizzaItem) {
+      navigate("/error");
+    }
     addUpPrices();
-  }, [addUpPrices, id, data, setPizzaData]);
+  }, [addUpPrices, id, data, setPizzaData, navigate]);
+
   return (
     <>
       <section className="pizza-card">

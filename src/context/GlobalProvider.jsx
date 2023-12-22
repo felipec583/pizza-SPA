@@ -1,9 +1,12 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useMemo } from "react";
 
 export const GlobalContext = createContext();
 
 const GlobalProvider = ({ children }) => {
-  const storedPizzas = JSON.parse(localStorage.getItem("pizzas")) ?? [];
+  const storedPizzas = useMemo(
+    () => JSON.parse(localStorage.getItem("pizzas")) ?? [],
+    []
+  );
   //State for fetched Data
   const [data, setData] = useState([]);
   //State for pizza object
@@ -31,13 +34,13 @@ const GlobalProvider = ({ children }) => {
           if (!response.ok) throw new Error(response.status);
         }
       })
-      .then((pizzaData) => {
-        setData(pizzaData);
+      .then((pizza) => {
+        setData(pizza);
       })
       .catch((error) => console.log(`There is an issue: ${error.message}`));
     localStorage.setItem("pizzas", JSON.stringify(cartList));
     if (!storedPizzas) setCartList([]);
-  }, [cartList]);
+  }, [cartList, storedPizzas]);
 
   function increaseQuantity(item) {
     const cartListCopy = [...cartList];
