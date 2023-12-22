@@ -3,12 +3,13 @@ import { createContext, useState, useEffect } from "react";
 export const GlobalContext = createContext();
 
 const GlobalProvider = ({ children }) => {
+  const storedPizzas = JSON.parse(localStorage.getItem("pizzas"));
   //State for fetched Data
   const [data, setData] = useState([]);
   //State for pizza object
   const [pizzaData, setPizzaData] = useState(null);
   // State for cart items
-  const [cartList, setCartList] = useState([]);
+  const [cartList, setCartList] = useState(storedPizzas);
   // State for total amount to pay
   const [total, setTotal] = useState(0);
   useEffect(() => {
@@ -34,7 +35,9 @@ const GlobalProvider = ({ children }) => {
         setData(pizzaData);
       })
       .catch((error) => console.log(`There is an issue: ${error.message}`));
-  }, []);
+
+    localStorage.setItem("pizzas", JSON.stringify(cartList));
+  }, [cartList]);
 
   function increaseQuantity(item) {
     const cartListCopy = [...cartList];
