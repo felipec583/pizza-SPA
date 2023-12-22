@@ -61,7 +61,7 @@ const PizzaCardRow = () => {
                     borderStyle={"solid"}
                     borderBlock={"1"}
                   />
-                  <h2 className="my-2 font-bold">Ingredientes</h2>
+                  <h2 className="my-2 font-bold">Ingredientes:</h2>
 
                   <ul className="list-image-[url(/pizza2.png)] flex flex-col items-start flex-1  ingredient-list">
                     {pizza?.ingredients.map((ingredient) => (

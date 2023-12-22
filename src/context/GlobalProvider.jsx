@@ -35,8 +35,8 @@ const GlobalProvider = ({ children }) => {
         setData(pizzaData);
       })
       .catch((error) => console.log(`There is an issue: ${error.message}`));
-
     localStorage.setItem("pizzas", JSON.stringify(cartList));
+    if (!storedPizzas) setCartList([]);
   }, [cartList]);
 
   function increaseQuantity(item) {
