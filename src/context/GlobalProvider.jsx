@@ -3,7 +3,7 @@ import { createContext, useState, useEffect } from "react";
 export const GlobalContext = createContext();
 
 const GlobalProvider = ({ children }) => {
-  const storedPizzas = JSON.parse(localStorage.getItem("pizzas"));
+  const storedPizzas = JSON.parse(localStorage.getItem("pizzas")) ?? [];
   //State for fetched Data
   const [data, setData] = useState([]);
   //State for pizza object
