@@ -6,7 +6,7 @@ const GlobalProvider = ({ children }) => {
   //State for fetched Data
   const [data, setData] = useState([]);
   //State for pizza object
-  const [pizzaData, setPizzaData] = useState();
+  const [pizzaData, setPizzaData] = useState(null);
   // State for cart items
   const [cartList, setCartList] = useState([]);
   // State for total amount to pay

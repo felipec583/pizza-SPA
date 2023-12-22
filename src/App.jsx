@@ -11,7 +11,7 @@ function App() {
     if (location.pathname === "/") {
       navigate("/home");
     }
-  }, [location]);
+  }, [navigate, location.pathname]);
   return (
     <>
       <NavBar />

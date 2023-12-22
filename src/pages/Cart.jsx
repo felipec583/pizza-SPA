@@ -17,7 +17,7 @@ const Cart = () => {
   } = useContext(GlobalContext);
   useEffect(() => {
     addUpPrices();
-  }, [cartList]);
+  }, [addUpPrices]);
 
   return (
     <>
